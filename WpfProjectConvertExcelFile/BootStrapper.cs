@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Prism.Unity;
+using System;
 using System.Windows;
-using Prism.Unity;
 
 namespace WpfProjectConvertExcelFile
 {
-    public class BootStrapper: UnityBootstrapper
+    public class BootStrapper : UnityBootstrapper
     {
         public override void Run(bool runWithDefaultConfiguration)
         {

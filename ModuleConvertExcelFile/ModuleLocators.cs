@@ -33,7 +33,7 @@ namespace ModuleConvertExcelFile
         public void OnInitialized(IContainerProvider containerProvider)
         {
             _regionManager.RegisterViewWithRegion("Shell", typeof(View.ConvertExcelFileView));  //ModuleLocators is added for testing purpose,     
-                                                                                     //later we'll replace it with WelcomePageView      
+                                                                                                //later we'll replace it with WelcomePageView      
         }
 
         /// <summary>        
