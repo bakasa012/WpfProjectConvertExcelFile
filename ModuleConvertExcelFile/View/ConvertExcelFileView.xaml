@@ -4,12 +4,58 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ModuleConvertExcelFile.View"
+             xmlns:my="clr-namespace:ModuleConvertExcelFile"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             xmlns:prism="http://prismlibrary.com/"    
-             prism:ViewModelLocator.AutoWireViewModel="True" 
-             >
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="You successfully have configured Prism into your APP" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="42*"></RowDefinition>
+            <RowDefinition Height="106*"></RowDefinition>
+            <RowDefinition Height="74*"></RowDefinition>
+            <RowDefinition Height="79*"></RowDefinition>
+            <RowDefinition Height="133*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="279*"></ColumnDefinition>
+            <ColumnDefinition Width="521*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Content="ファイル" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.329,-0.222" Width="112" Height="20"/>
+        <Label Content="年月" HorizontalAlignment="Left" Margin="95,71,0,0" Grid.Row="1" VerticalAlignment="Top" Width="173" Height="26"/>
+        <Label Content="変換フォルダ" HorizontalAlignment="Left" Margin="95,0,0,0" Grid.Row="2" VerticalAlignment="Center" Width="173" Height="26"/>
+        <Label Content="出力先" HorizontalAlignment="Left" Margin="95,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="174" Height="26"/>
+        <DatePicker  Grid.Column="1" HorizontalAlignment="Left" Margin="70,72,0,0" Grid.Row="1" VerticalAlignment="Top" Width="191" Height="24"
+                     SelectedDateFormat="Long"
+                     my:DatePickerCalendar.IsMonthYear="True"
+                     my:DatePickerDateFormat.DateFormat="yyyy/MM"
+                     >
+        </DatePicker>
+        <Label Name="lbLinkUrlUpload" Content="C:\業務課プログラム\自己調達許諾シール給付申請書システム\解凍後データ保存場所\" Grid.Column="1" HorizontalAlignment="Left" Margin="70,0,0,0" Grid.Row="2" VerticalAlignment="Center" Width="441" Height="26">
+            <Label.Style>
+                <Style TargetType="Label">
+                    <Setter Property="Foreground" Value="Black" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Blue" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Label.Style>
+        </Label>
+        <Label Name="lbLinkUrlSaveFile" Content="C:\業務課プログラム\自己調達許諾シール給付申請書システム\提出\" Grid.Column="1" HorizontalAlignment="Left" Margin="70,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="441" Height="26" 
+               >
+            <Label.Style>
+                <Style TargetType="Label">
+                    <Setter Property="Foreground" Value="Black" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Blue" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Label.Style>
+        </Label>
+        <Button Content="変換"
+                HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" VerticalAlignment="Top"
+                Width="112" Height="20"/>
     </Grid>
 </UserControl>

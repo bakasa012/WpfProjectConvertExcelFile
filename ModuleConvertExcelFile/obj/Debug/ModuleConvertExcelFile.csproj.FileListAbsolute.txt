@@ -31,3 +31,4 @@ C:\Users\lieu.hong.thai\source\repos\WpfProjectConvertExcelFile\ModuleConvertExc
 C:\Users\lieu.hong.thai\source\repos\WpfProjectConvertExcelFile\ModuleConvertExcelFile\obj\Debug\ModuleConvertExcelFile.csproj.CopyComplete
 C:\Users\lieu.hong.thai\source\repos\WpfProjectConvertExcelFile\ModuleConvertExcelFile\obj\Debug\ModuleConvertExcelFile.dll
 C:\Users\lieu.hong.thai\source\repos\WpfProjectConvertExcelFile\ModuleConvertExcelFile\obj\Debug\ModuleConvertExcelFile.pdb
+C:\Users\lieu.hong.thai\source\repos\WpfProjectConvertExcelFile\ModuleConvertExcelFile\obj\Debug\GeneratedInternalTypeHelper.g.cs
