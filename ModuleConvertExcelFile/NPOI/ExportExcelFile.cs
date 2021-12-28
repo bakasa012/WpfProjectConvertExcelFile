@@ -85,7 +85,11 @@ namespace ModuleConvertExcelFile.NPOI
             MergeStyleWithCell.Instance.SetCellStyleOneRow(wb, sheet, 3, 5, 7, "bgBlack");
             MergeStyleWithCell.Instance.SetCellStyleOneRow(wb, sheet, 4, 3, 7, "bgBlack");
             //set type value for cell header
+<<<<<<< Updated upstream
             SetCellTypeValueForMultiRow.Instance.SetCellValueTypeMultiRow(sheet, 8, 9, 2, 7, CellType.Blank);
+=======
+            //SetCellValueType.Instance.SetCellValueTypeMultiRow(sheet, 8, 9, 2,7, CellType.Blank);
+>>>>>>> Stashed changes
             //data body
             rowIndex++;
             foreach (DataBinding.DataBodyExcelFile item in dataBodyExcelFiles)
