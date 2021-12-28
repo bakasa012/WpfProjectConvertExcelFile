@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ELdlAu20Q2hHuJMWlQu2R9hwhO49p+9KIVLjPjGTKDbVecVHTQ3hPbFHKI5TYAgpHSkU/sWyYPuKhYzt7HI27w==",
+  "dgSpecHash": "nfOgBUoJKx3TvvJ/tYwtwkBySxtTqM5KvMLE9TK5G0Fy/23zpDquMeaLpxHOl1Q/sske3PAlIh0Xb8dSFibPPg==",
   "success": true,
   "projectFilePath": "C:\\Users\\lieu.hong.thai\\source\\repos\\WpfProjectConvertExcelFile\\WpfProjectConvertExcelFile\\WpfProjectConvertExcelFile.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lieu.hong.thai\\.nuget\\packages\\commonservicelocator\\2.0.4\\commonservicelocator.2.0.4.nupkg.sha512",
+    "C:\\Users\\lieu.hong.thai\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\lieu.hong.thai\\.nuget\\packages\\prism.core\\7.2.0.1422\\prism.core.7.2.0.1422.nupkg.sha512",
     "C:\\Users\\lieu.hong.thai\\.nuget\\packages\\prism.unity\\7.2.0.1422\\prism.unity.7.2.0.1422.nupkg.sha512",
     "C:\\Users\\lieu.hong.thai\\.nuget\\packages\\prism.wpf\\7.2.0.1422\\prism.wpf.7.2.0.1422.nupkg.sha512",

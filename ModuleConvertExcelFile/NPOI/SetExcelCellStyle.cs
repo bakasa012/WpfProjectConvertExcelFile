@@ -20,19 +20,15 @@ namespace ModuleConvertExcelFile.NPOI
                 return instance;
             }
 
-            set { SetExcelCellStyle.instance = value; }
+            set {instance = value; }
         }
-
-#pragma warning disable SA1201 // Elements should appear in the correct order
         private SetExcelCellStyle() { }
 
-#pragma warning restore SA1201 // Elements should appear in the correct order
-
-        public void FontChange(XSSFWorkbook wb, string caseFont, IRow row, int index)
+        [System.Obsolete]
+        public void FontChange(XSSFWorkbook wb, string caseFont, IRow row, int indexCell)
         {
             IFont font = wb.CreateFont();
             ICellStyle cellStyle = wb.CreateCellStyle();
-
             switch (caseFont)
             {
                 case "title":
@@ -64,6 +60,7 @@ namespace ModuleConvertExcelFile.NPOI
                 case "table":
                     font.FontName = "MS PGothic";
                     font.FontHeightInPoints = 11;
+                    cellStyle.FillForegroundColor = HSSFColor.LightGreen.Index;
                     cellStyle.DataFormat = wb.CreateDataFormat().GetFormat("text");
                     cellStyle.Alignment = HorizontalAlignment.Center;
                     cellStyle.VerticalAlignment = VerticalAlignment.Center;
@@ -72,22 +69,18 @@ namespace ModuleConvertExcelFile.NPOI
                     cellStyle.BorderRight = BorderStyle.Thin;
                     cellStyle.BorderTop = BorderStyle.Thin;
                     break;
-                case "description":
-                    font.FontName = "MS PGothic";
-                    font.FontHeightInPoints = 11;
-                    break;
-                case "numberic":
-                    font.FontName = "MS PGothic";
-                    font.FontHeightInPoints = 11;
-                    cellStyle.DataFormat = wb.CreateDataFormat().GetFormat("text");
-                    break;
                 case "bgBlack":
-                    /*cellStyle.BorderBottom = BorderStyle.None;
-                    cellStyle.BorderLeft = BorderStyle.None;
-                    cellStyle.BorderRight = BorderStyle.None;
-                    cellStyle.BorderTop = BorderStyle.None;*/
                     cellStyle.FillForegroundColor = HSSFColor.Grey50Percent.Index;
-                    cellStyle.FillBackgroundColor = HSSFColor.Red.Index;
+                    cellStyle.BorderBottom = BorderStyle.Thin;
+                    cellStyle.BorderTop = BorderStyle.Thin;
+                    //cellStyle.FillBackgroundColor = HSSFColor.Red.Index;
+                    break;
+                case "bgYellow":
+                    cellStyle.FillForegroundColor = HSSFColor.LightYellow.Index;
+                    cellStyle.BorderBottom = BorderStyle.Thin;
+                    cellStyle.BorderLeft = BorderStyle.Thin;
+                    cellStyle.BorderRight = BorderStyle.Thin;
+                    cellStyle.BorderTop = BorderStyle.Thin;
                     break;
                 case "tableBody":
                     font.FontName = "MS PGothic";
@@ -101,12 +94,12 @@ namespace ModuleConvertExcelFile.NPOI
                     cellStyle.BorderTop = BorderStyle.Thin;
                     break;
                 default:
-                    font.FontName = "Calibri";
-                    cellStyle.FillBackgroundColor = HSSFColor.Gold.Index;
+                    font.FontName = "MS PGothic";
+                    font.FontHeightInPoints = 11;
                     break;
             }
             cellStyle.SetFont(font);
-            row.GetCell(index).CellStyle = cellStyle;
+            row.GetCell(indexCell).CellStyle = cellStyle;
         }
     }
 }

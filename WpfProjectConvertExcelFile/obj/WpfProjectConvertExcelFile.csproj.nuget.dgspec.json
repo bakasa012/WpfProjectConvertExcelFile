@@ -63,6 +63,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Prism.Unity": {
               "target": "Package",
               "version": "[7.2.0.1422, )"

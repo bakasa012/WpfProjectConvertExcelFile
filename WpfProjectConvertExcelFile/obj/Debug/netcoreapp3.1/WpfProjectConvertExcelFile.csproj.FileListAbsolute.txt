@@ -44,4 +44,3 @@ C:\Users\lieu.hong.thai\source\repos\WpfProjectConvertExcelFile\WpfProjectConver
 C:\Users\lieu.hong.thai\source\repos\WpfProjectConvertExcelFile\WpfProjectConvertExcelFile\bin\Debug\netcoreapp3.1\ICSharpCode.SharpZipLib.xml
 C:\Users\lieu.hong.thai\source\repos\WpfProjectConvertExcelFile\WpfProjectConvertExcelFile\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.xml
 C:\Users\lieu.hong.thai\source\repos\WpfProjectConvertExcelFile\WpfProjectConvertExcelFile\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\lieu.hong.thai\source\repos\WpfProjectConvertExcelFile\WpfProjectConvertExcelFile\bin\Debug\netcoreapp3.1\Newtonsoft.Json.xml

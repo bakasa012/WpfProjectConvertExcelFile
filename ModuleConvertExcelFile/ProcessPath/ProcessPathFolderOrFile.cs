@@ -15,7 +15,7 @@ namespace ModuleConvertExcelFile.ProcessPath
 {
     public class ProcessPathFolderOrFile
     {
-        public void checkDataJson(string pathFileExcel, string pathFileJson, List<DataBindingCompanyCode> dataBindingCompanyCodes)
+        public void CheckDataJson(string pathFileExcel, string pathFileJson, List<DataBindingCompanyCode> dataBindingCompanyCodes)
         {
             IWorkbook wb = null;
             string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -31,10 +31,8 @@ namespace ModuleConvertExcelFile.ProcessPath
                             case ".xls":
                                 wb = new HSSFWorkbook(fileStream);
                                 break;
-                            case ".xlsx":
-                                wb = new XSSFWorkbook(fileStream);
-                                break;
                             default:
+                                wb = new XSSFWorkbook(fileStream);
                                 break;
                         }
                     ISheet sheet = wb.GetSheetAt(0);
@@ -68,8 +66,18 @@ namespace ModuleConvertExcelFile.ProcessPath
             using (StreamReader streamReader = new StreamReader(pathFileJson))
             {
                 string json = streamReader.ReadToEnd();
+                dataBindingCompanyCodes.Clear();
                 List<DataBindingCompanyCode> items = JsonConvert.DeserializeObject<List<DataBindingCompanyCode>>(json);
-                dataBindingCompanyCodes = items;
+                foreach (DataBindingCompanyCode item in items)
+                {
+                    DataBindingCompanyCode dataBindingCompanyCode = new DataBindingCompanyCode()
+                    {
+                        CDVJMemberNumber = item.CDVJMemberNumber,
+                        StoreName = item.StoreName,
+                        GEOStoreCode = item.GEOStoreCode,
+                    };
+                    dataBindingCompanyCodes.Add(dataBindingCompanyCode);
+                }
                 Console.WriteLine(items);
             };
         }

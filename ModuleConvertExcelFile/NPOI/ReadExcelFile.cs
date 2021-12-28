@@ -9,59 +9,66 @@ namespace ModuleConvertExcelFile.NPOI
 {
     public class ReadExcelFile
     {
+        private static ReadExcelFile instance;
+
+        public static ReadExcelFile Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ReadExcelFile();
+                }
+
+                return instance;
+            }
+
+            set { ReadExcelFile.instance = value; }
+        }
+
+        private ReadExcelFile() { }
         public void ReadFileExcelWitdNPOI(string pathFile, List<DataBinding.DataHeaderExcel> dataHeaderExcels, List<DataBinding.DataBodyExcelFile> dataBodyExcelFiles)
         {
-            IWorkbook wb = null;
             dataHeaderExcels.Clear();
             dataBodyExcelFiles.Clear();
             using (FileStream fileStream = new FileStream(@pathFile, FileMode.Open, FileAccess.Read))
             {
-                try
+                IWorkbook wb;
+                switch (Path.GetExtension(pathFile).ToLower())
                 {
-                    switch (Path.GetExtension(pathFile).ToLower())
-                    {
-                        case ".xls":
-                            wb = new HSSFWorkbook(fileStream);
-                            break;
-                        case ".xlsx":
-                            wb = new XSSFWorkbook(fileStream);
-                            break;
-                        default:
-                            break;
-                    }
+                    case ".xlsx":
+                        wb = new XSSFWorkbook(fileStream);
+                        break;
+                    default:
+                        wb = new HSSFWorkbook(fileStream);
+                        break;
                 }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-
                 ISheet sheet = wb.GetSheetAt(0);
                 int lastRow = sheet.LastRowNum;
                 bool isDataBody = false;
                 int rowIndex = 4;
 
-                while (true)
+                while (rowIndex <= lastRow - 1)
                 {
-                    var nowRow = sheet.GetRow(rowIndex);
+                    IRow nowRow = sheet.GetRow(rowIndex);
                     if (nowRow != null)
                     {
-                        if (nowRow.GetCell(0)?.ToString() == "ISBNコード")
-                        {
-                            isDataBody = true;
-                        }
-                        if (!isDataBody)
+                        //if (nowRow.GetCell(0)?.ToString() == "ISBNコード")
+                        //{
+                        //    isDataBody = true;
+                        //}
+                        if (rowIndex<17)
                         {
                             DataBinding.DataHeaderExcel dataHeaderExcel = new DataBinding.DataHeaderExcel
                             {
                                 column1 = " ",
-                                column2 = nowRow.GetCell(0)?.ToString(),
-                                column3 = nowRow.GetCell(1)?.ToString().Trim(),
-                                column4 = nowRow.GetCell(2)?.ToString(),
-                                column5 = nowRow.GetCell(3)?.ToString(),
-                                column6 = nowRow.GetCell(4)?.ToString(),
+                                column2 = nowRow.GetCell(0,MissingCellPolicy.CREATE_NULL_AS_BLANK).ToString(),
+                                column3 = nowRow.GetCell(1, MissingCellPolicy.CREATE_NULL_AS_BLANK).ToString().Trim(),
+                                column4 = nowRow.GetCell(2, MissingCellPolicy.CREATE_NULL_AS_BLANK).ToString(),
+                                column5 = nowRow.GetCell(3, MissingCellPolicy.CREATE_NULL_AS_BLANK).ToString(),
+                                column6 = nowRow.GetCell(4, MissingCellPolicy.CREATE_NULL_AS_BLANK).ToString(),
                                 column7 = "",
-                                column8 = nowRow.GetCell(5)?.ToString(),
+                                column8 = nowRow.GetCell(5, MissingCellPolicy.CREATE_NULL_AS_BLANK).ToString(),
                             };
                             dataHeaderExcels.Add(dataHeaderExcel);
                         }
@@ -70,38 +77,21 @@ namespace ModuleConvertExcelFile.NPOI
                             DataBinding.DataBodyExcelFile dataBodyExcelFile = new DataBinding.DataBodyExcelFile()
                             {
                                 column1 = " ",
-                                column2 = nowRow.GetCell(0)?.ToString(),
-                                column3 = nowRow.GetCell(1)?.ToString(),
-                                column4 = nowRow.GetCell(2)?.ToString(),
-                                column5 = nowRow.GetCell(3)?.ToString(),
-                                column6 = nowRow.GetCell(4)?.ToString(),
+                                column2 = nowRow.GetCell(0, MissingCellPolicy.CREATE_NULL_AS_BLANK).ToString(),
+                                column3 = nowRow.GetCell(1, MissingCellPolicy.CREATE_NULL_AS_BLANK).ToString(),
+                                column4 = nowRow.GetCell(2, MissingCellPolicy.CREATE_NULL_AS_BLANK).ToString(),
+                                column5 = nowRow.GetCell(3, MissingCellPolicy.CREATE_NULL_AS_BLANK).ToString(),
+                                column6 = nowRow.GetCell(4, MissingCellPolicy.CREATE_NULL_AS_BLANK).ToString(),
                                 column7 = "",
-                                column8 = nowRow.GetCell(5)?.ToString(),
+                                column8 = nowRow.GetCell(5, MissingCellPolicy.CREATE_NULL_AS_BLANK).ToString(),
                             };
                             dataBodyExcelFiles.Add(dataBodyExcelFile);
                         }
-
                     }
-                    else if (!isDataBody)
-                    {
-                        DataBinding.DataHeaderExcel dataHeaderExcel = new DataBinding.DataHeaderExcel
-                        {
-                            column1 = "",
-                            column2 = "",
-                            column3 = "",
-                            column4 = "",
-                            column5 = "",
-                            column6 = "",
-                            column7 = "",
-                            column8 = "",
-                        };
-                        dataHeaderExcels.Add(dataHeaderExcel);
-                    }
-                    if (rowIndex >= lastRow - 1)
-                        break;
+                    else { }
+                    
                     rowIndex++;
                 }
-
                 fileStream.Close();
             };
         }
