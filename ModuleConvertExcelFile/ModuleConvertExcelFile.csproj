@@ -108,6 +108,7 @@
     <Compile Include="NPOI\ExportExcelFile.cs" />
     <Compile Include="NPOI\MergeStyleWithCell.cs" />
     <Compile Include="NPOI\ReadExcelFile.cs" />
+    <Compile Include="NPOI\SetCellTypeValueForMultiRow.cs" />
     <Compile Include="NPOI\SetExcelCellStyle.cs" />
     <Compile Include="NPOI\SetExcelColumnStyle.cs" />
     <Compile Include="ProcessPath\CreateOrGetFolder.cs" />
