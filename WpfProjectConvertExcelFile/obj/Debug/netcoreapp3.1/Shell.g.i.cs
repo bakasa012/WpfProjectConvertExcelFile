@@ -60,7 +60,7 @@ namespace WpfProjectConvertExcelFile {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WpfProjectConvertExcelFile;component/shell.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WpfProjectConvertExcelFile;V1.0.0.0;component/shell.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Shell.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
